@@ -44,4 +44,15 @@ export class AuthService {
 
     return this.httpClient.post<TokenData>(`${this.SPOTIFY_API}/token`, body, this.HEADERS_OPTIONS);
   }
+
+  refreshToken(): Observable<TokenData> {
+    const refreshToken = AuthHelper.getRefreshToken();
+    const body = new URLSearchParams({
+      grant_type: 'refresh_token',
+      refresh_token: refreshToken,
+      client_id: SPOTIFY_CLIENT_ID
+    });
+
+    return this.httpClient.post<TokenData>(`${this.SPOTIFY_API}/token`, body, this.HEADERS_OPTIONS);
+  }
 }

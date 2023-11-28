@@ -21,7 +21,8 @@ export class LoginComponent {
       const { code } = params as RedirectUrlParams;
       if (code) {
         this.authService.requestSpotifyAccessToken(code).subscribe(response => {
-          AuthHelper.setTokenLocalStorageAndRemoveCodeVerifier(response);
+          AuthHelper.setTokenDataLocalStorage(response);
+          AuthHelper.removeCodeVerifierLocalStorage();
           this.router.navigate(['home']);
         });
       }

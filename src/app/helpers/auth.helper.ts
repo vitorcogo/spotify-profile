@@ -14,10 +14,17 @@ export class AuthHelper {
     return localStorage.getItem('code_verifier') ?? '';
   }
 
-  static setTokenLocalStorageAndRemoveCodeVerifier(data: TokenData) {
+  static getRefreshToken() {
+    return localStorage.getItem('spotify_refresh_token') ?? '';
+  }
+
+  static setTokenDataLocalStorage(data: TokenData) {
     localStorage.setItem('spotify_access_token', data.access_token);
     localStorage.setItem('spotify_expires_in', data.expires_in.toString());
     localStorage.setItem('spotify_refresh_token', data.refresh_token);
+  }
+  
+  static removeCodeVerifierLocalStorage() {
     localStorage.removeItem('code_verifier');
   }
 
