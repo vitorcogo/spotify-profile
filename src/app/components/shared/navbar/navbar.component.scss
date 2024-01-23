@@ -1,0 +1,128 @@
+:host {
+  height: 100vh;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  width: 9rem;
+  height: 100%;
+  
+  gap: 4rem;
+  padding: 2rem 0;
+
+  background-color: var(--black);
+  box-shadow: 0px 10px 10px 0px var(--black);
+}
+
+.spotify-logo {
+  img {
+    height: 4.2rem;
+  }
+}
+nav {
+  width: 100%;
+  .pages {
+    display: flex;
+    flex-direction: column;
+  
+    &__item {
+      list-style: none;
+      height: 6rem;
+      
+      transition: .3s;
+
+      &:hover {
+        background-color: var(--background-mid);
+      }
+    }
+    
+    &__link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      width: 100%;
+      height: 100%;
+      gap: .4rem;
+
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      
+      &--active {
+        border-left: 3px solid var(--green);
+        border-right: 3px solid transparent;
+        background-color: var(--background-mid);
+        color: var(--text-main);
+
+        .pages__link__icon {
+          background-color: var(--text-main);
+        }
+      }
+
+      &__icon {
+        width: 2rem;
+        height: 2rem;
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        mask-position: center;
+        background-color: var(--text-secondary);
+
+        &.profile {
+          mask-image: url(../../../../assets/icons/profile_icon.svg);
+        }
+
+        &.recent {
+          mask-image: url(../../../../assets/icons/time_icon.svg);
+        }
+
+        &.playlists {
+          mask-image: url(../../../../assets/icons/playlist_icon.svg);
+        }
+
+        &.musics {
+          mask-image: url(../../../../assets/icons/music_icon.svg);
+        }
+
+        &.artists {
+          mask-image: url(../../../../assets/icons/mic_icon.svg);
+        }
+      }
+    }
+  }
+}
+
+.extra-links {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+
+  padding-bottom: 1rem;
+
+  &__item {
+    width: 3rem;
+    height: 3rem;
+
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background-color: var(--text-secondary);
+
+    transition: .3s;
+
+    &:hover {
+      background-color: var(--text-main);
+    }
+
+    &.github {
+      mask-image: url(../../../../assets/icons/github_icon.svg);
+    }
+  }
+}

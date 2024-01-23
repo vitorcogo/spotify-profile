@@ -10,8 +10,6 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class AuthService {
 
-  // TODO: Criar intercepetor para refresh token
-
   private readonly SPOTIFY_API = 'https://accounts.spotify.com/api'
   private readonly HEADERS_OPTIONS = { headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded') };
 

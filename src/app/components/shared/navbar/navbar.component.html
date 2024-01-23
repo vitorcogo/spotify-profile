@@ -1,0 +1,22 @@
+<header>
+  <div class="spotify-logo">
+    <img src="../../../assets/icons/spotify_logo.svg" alt="Spotify">
+  </div>
+  <nav>
+    <ul class="pages">
+      <li class="pages__item" *ngFor="let page of pages">
+        <a 
+          [routerLink]="page.id" 
+          class="pages__link"
+          [ngClass]="{'pages__link--active' : page.isActive}"
+          (click)="setCurrentPage(page.id)">
+          <div class="pages__link__icon" [class]="page.id"></div>
+          <span class="pages__link__title">{{ page.title }}</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div class="extra-links">
+    <a class="extra-links__item github" href="https://github.com/vitorcogo/spotify-profile" target="_blank"></a>
+  </div>
+</header>

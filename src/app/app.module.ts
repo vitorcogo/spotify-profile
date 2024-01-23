@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 import { ComponentsModule } from './components/components.module';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { HomeModule } from './components/home/home.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     CommonModule,
     RouterModule,
     HttpClientModule,
-    ComponentsModule
+    ComponentsModule,
+    HomeModule
   ],
   providers: [
     {
