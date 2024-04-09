@@ -1,0 +1,13 @@
+
+@mixin mask {
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  aspect-ratio: 1;
+}
+
+@mixin text-elipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

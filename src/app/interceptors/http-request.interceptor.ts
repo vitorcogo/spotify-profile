@@ -4,17 +4,23 @@ import { Observable, catchError, throwError } from "rxjs";
 import { AuthService } from "../services/auth.service";
 import { TokenData } from "../models/spotify/token-data.interface";
 import { AuthHelper } from "../helpers/auth.helper";
+import { Router } from "@angular/router";
 
 @Injectable()
-export class AuthInterceptor implements HttpInterceptor {
+export class HttpRequestInterceptor implements HttpInterceptor {
 
   // TODO: Debuggar interceptor para quando houver erro de autenticação (token expirado)
 
-  constructor(private inject: Injector) { }
+  constructor(
+    private inject: Injector,
+    private router: Router
+  ) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    return next.handle(req).pipe(
-      catchError(error => this.handleError(error, req, next))
+    const request = this.returnRequestWithAccessToken(req);
+
+    return next.handle(request).pipe(
+      catchError(error => this.handleError(error, request, next))
     );
   }
 
@@ -23,9 +29,8 @@ export class AuthInterceptor implements HttpInterceptor {
     req: HttpRequest<any>, 
     next: HttpHandler): Observable<any> {
     const authService = this.inject.get(AuthService);
-
     if (error && error.status === 401) {
-      authService.refreshToken().subscribe({
+      authService.getRefreshToken().subscribe({
         next: (reponse: TokenData) => {
           AuthHelper.clearTokenLocalStorage();
           AuthHelper.setTokenDataLocalStorage(reponse);
@@ -33,10 +38,22 @@ export class AuthInterceptor implements HttpInterceptor {
           return next.handle(req);
         },
         error: (err: any) => {
+          AuthHelper.clearTokenLocalStorage();
+          this.router.navigate(['login']);
+          
           return throwError(() => err);
         }
       });
     }
     return throwError(() => error);
+  }
+
+  private returnRequestWithAccessToken(req: HttpRequest<any>): HttpRequest<any> {
+    const token = AuthHelper.getAccessToken();
+    const requestWithToken = req.clone({
+      headers: req.headers.set('Authorization', token ? `Bearer ${token}` : '')
+    })
+
+    return requestWithToken;
   }
 }

@@ -14,6 +14,10 @@ export class AuthHelper {
     return localStorage.getItem('code_verifier') ?? '';
   }
 
+  static getAccessToken() {
+    return localStorage.getItem('spotify_access_token') ?? '';
+  }
+
   static getRefreshToken() {
     return localStorage.getItem('spotify_refresh_token') ?? '';
   }
@@ -63,7 +67,7 @@ export class AuthHelper {
   }
 
   static transformAuthParams(codeChallenge: string) {
-    const scope = 'user-read-private user-read-email';
+    const scope = 'user-read-private user-read-email user-follow-read user-top-read user-read-recently-played user-library-read';
     const authParams = {
       response_type: 'code',
       client_id: SPOTIFY_CLIENT_ID,

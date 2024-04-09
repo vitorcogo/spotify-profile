@@ -1,3 +1,5 @@
+@import '../../../styles/defaults';
+
 :host {
   height: 100vh;
 }
@@ -33,6 +35,7 @@ nav {
       height: 6rem;
       
       transition: .3s;
+      cursor: pointer;
 
       &:hover {
         background-color: var(--background-mid);
@@ -65,11 +68,9 @@ nav {
       }
 
       &__icon {
+        @include mask;
+
         width: 2rem;
-        height: 2rem;
-        mask-size: contain;
-        mask-repeat: no-repeat;
-        mask-position: center;
         background-color: var(--text-secondary);
 
         &.profile {
@@ -84,8 +85,8 @@ nav {
           mask-image: url(../../../../assets/icons/playlist_icon.svg);
         }
 
-        &.musics {
-          mask-image: url(../../../../assets/icons/music_icon.svg);
+        &.tracks {
+          mask-image: url(../../../../assets/icons/track_icon.svg);
         }
 
         &.artists {
@@ -107,12 +108,9 @@ nav {
   padding-bottom: 1rem;
 
   &__item {
-    width: 3rem;
-    height: 3rem;
+    @include mask;
 
-    mask-size: contain;
-    mask-repeat: no-repeat;
-    mask-position: center;
+    width: 3rem;
     background-color: var(--text-secondary);
 
     transition: .3s;

@@ -3,8 +3,8 @@ import { Routes, RouterModule } from "@angular/router";
 import { ProfileComponent } from "../shared/profile/profile.component";
 import { RecentComponent } from "../shared/recent/recent.component";
 import { PlaylistsComponent } from "../shared/playlists/playlists.component";
-import { MusicsComponent } from "../shared/musics/musics.component";
 import { ArtistsComponent } from "../shared/artists/artists.component";
+import { TracksComponent } from "../shared/tracks/tracks.component";
 
 const routes: Routes = [
   {
@@ -24,8 +24,8 @@ const routes: Routes = [
     component: PlaylistsComponent
   },
   {
-    path: 'musics',
-    component: MusicsComponent
+    path: 'tracks',
+    component: TracksComponent
   },
   {
     path: 'artists',

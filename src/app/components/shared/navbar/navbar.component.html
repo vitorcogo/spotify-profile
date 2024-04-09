@@ -8,7 +8,7 @@
         <a 
           [routerLink]="page.id" 
           class="pages__link"
-          [ngClass]="{'pages__link--active' : page.isActive}"
+          [ngClass]="{'pages__link--active' : currentPage === page.id}"
           (click)="setCurrentPage(page.id)">
           <div class="pages__link__icon" [class]="page.id"></div>
           <span class="pages__link__title">{{ page.title }}</span>

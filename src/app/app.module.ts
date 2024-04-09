@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { ComponentsModule } from './components/components.module';
-import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { HttpRequestInterceptor } from './interceptors/http-request.interceptor';
 import { HomeModule } from './components/home/home.module';
 
 @NgModule({
@@ -24,7 +24,7 @@ import { HomeModule } from './components/home/home.module';
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
+      useClass: HttpRequestInterceptor,
       multi: true
     }
   ],

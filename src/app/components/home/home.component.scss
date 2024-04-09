@@ -1,4 +1,18 @@
-.content {
+.container {
   display: flex;
   flex-direction: row;
+  height: 100%;
+
+  .content__page {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    padding: 0 13rem;
+  }
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  max-height: 100vh;
 }

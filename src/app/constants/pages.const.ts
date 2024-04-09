@@ -4,27 +4,22 @@ import { PagesEnum } from "../models/pages.enum";
 export const Pages: Page[] = [
   {
     title: 'Perfil',
-    id: PagesEnum.PROFILE,
-    isActive: true    
+    id: PagesEnum.PROFILE
   },
   {
     title: 'Recentes',
-    id: PagesEnum.RECENT,
-    isActive: false    
+    id: PagesEnum.RECENT
   },
   {
     title: 'Playlists',
-    id: PagesEnum.PLAYLISTS,
-    isActive: false    
+    id: PagesEnum.PLAYLISTS
   },
   {
     title: 'Músicas',
-    id: PagesEnum.MUSICS,
-    isActive: false    
+    id: PagesEnum.TRACKS
   },
   {
     title: 'Artistas',
-    id: PagesEnum.ARTISTS,
-    isActive: false    
+    id: PagesEnum.ARTISTS
   }
 ]

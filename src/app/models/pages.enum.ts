@@ -3,6 +3,6 @@ export enum PagesEnum {
   PROFILE = 'profile',
   RECENT = 'recent',
   PLAYLISTS = 'playlists',
-  MUSICS = 'musics',
+  TRACKS = 'tracks',
   ARTISTS = 'artists'
 }
