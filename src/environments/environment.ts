@@ -1,3 +1,3 @@
 export const environment = {
-  spotifyAuthRedirectUri: 'https://https://spotify-profile-gzo3jco4d-vitorcogos-projects.vercel.app/login'
+  spotifyAuthRedirectUri: 'https://spotify-profile-vitorcogos-projects.vercel.app/login'
 };
