@@ -22,6 +22,7 @@ const routes: Routes = [
   {
     path: 'playlists',
     component: PlaylistsComponent
+    // TODO utilizar loadchildren para acessar rota de playlist
   },
   {
     path: 'tracks',

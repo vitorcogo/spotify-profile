@@ -6,4 +6,5 @@ export interface TrackInformation {
   uri: string;
   album: AlbumInformation;
   artists: ArtistInformation[];
+  duration_ms: number;
 }

@@ -10,6 +10,7 @@ import { ArtistInformation } from '../models/spotify/artist-information.interfac
 import { Artist } from '../models/artist.interface';
 import { Track } from '../models/track.interface';
 import { TrackInformation } from '../models/spotify/track-information.interface';
+import { RecentTrackInformation } from '../models/spotify/recent-track-information.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -69,25 +70,37 @@ export class SpotifyApiService {
   }
 
   getTopTracks(limit: number = 8): Observable<Track[]> {
-    return this.http.get<ItemsResponse<TrackInformation>>(`${this.SPOTIFY_API}/me/top/tracks?limit=${limit}`).pipe(
-      map((result) => {
-        let topTracks: Track[] = [];
-        
-        for (const item of result.items) {
-          const { album } = item;
-
-          topTracks.push({
-            name: item.name,
-            image: album.images[0]?.url,
-            artists: item.artists.map(artist => {
-              return {
-                name: artist.name
-              }
-            })
-          } as Track); 
-        }
-        return topTracks;
-      })
+    const url = `${this.SPOTIFY_API}/me/top/tracks?limit=${limit}`;
+    return this.http.get<ItemsResponse<TrackInformation>>(url).pipe(
+      map((result) => this.tansformTrackInformation(result.items))
     );
   }
+
+  getRecentTracks(limit: number = 20): Observable<Track[]>{
+    const url = `${this.SPOTIFY_API}/me/player/recently-played?limit=${limit}`;
+    return this.http.get<ItemsResponse<RecentTrackInformation>>(url).pipe(
+      map((result) => this.tansformTrackInformation(result.items.map(item => item.track)))
+    );
+  }
+
+  private tansformTrackInformation(tracksInformation: TrackInformation[]): Track[] {
+    let tracks: Track[] = [];
+        
+    for (const trackInformation of tracksInformation) {
+      const { album } = trackInformation;
+
+      tracks.push({
+        name: trackInformation.name,
+        image: album.images[0]?.url,
+        durationMs: trackInformation.duration_ms,
+        albumName: album.name,
+        artists: trackInformation.artists.map(artist => {
+          return {
+            name: artist.name
+          }
+        })
+      } as Track); 
+    }
+    return tracks;
+  } 
 }

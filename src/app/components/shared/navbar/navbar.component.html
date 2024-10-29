@@ -4,16 +4,18 @@
   </div>
   <nav>
     <ul class="pages">
-      <li class="pages__item" *ngFor="let page of pages">
-        <a 
-          [routerLink]="page.id" 
-          class="pages__link"
-          [ngClass]="{'pages__link--active' : currentPage === page.id}"
-          (click)="setCurrentPage(page.id)">
-          <div class="pages__link__icon" [class]="page.id"></div>
-          <span class="pages__link__title">{{ page.title }}</span>
-        </a>
-      </li>
+      <ng-container *ngFor="let page of pages">
+        <li class="pages__item" *ngIf="page.isVisible">
+          <a 
+            [routerLink]="page.id" 
+            class="pages__link"
+            [ngClass]="{'pages__link--active' : currentPage === page.id}"
+            (click)="setCurrentPage(page.id)">
+            <div class="pages__link__icon" [class]="page.id"></div>
+            <span class="pages__link__title">{{ page.title }}</span>
+          </a>
+        </li>
+      </ng-container>
     </ul>
   </nav>
   <div class="extra-links">

@@ -8,6 +8,8 @@ import { PlaylistsComponent } from './playlists/playlists.component';
 import { ArtistsComponent } from './artists/artists.component';
 import { TracksComponent } from './tracks/tracks.component';
 import { PipesModule } from "src/app/pipes/pipes.module";
+import { NgxLoadingModule, ngxLoadingAnimationTypes } from "ngx-loading";
+import { TrackListComponent } from "./track-list/track-list.component";
 
 @NgModule({
   declarations: [
@@ -16,12 +18,22 @@ import { PipesModule } from "src/app/pipes/pipes.module";
     RecentComponent,
     PlaylistsComponent,
     ArtistsComponent,
-    TracksComponent
+    TracksComponent,
+    TrackListComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
-    PipesModule
+    PipesModule,
+    NgxLoadingModule.forRoot({
+      animationType: ngxLoadingAnimationTypes.threeBounce,
+      backdropBackgroundColour: "rgba(0,0,0,0.0)",
+      backdropBorderRadius: "4px",
+      primaryColour: "#ffffff",
+      secondaryColour: "#ffffff",
+      tertiaryColour: "#ffffff",
+      fullScreenBackdrop: false
+    })
   ],
   exports: [
     NavbarComponent,

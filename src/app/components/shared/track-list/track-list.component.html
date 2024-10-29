@@ -1,0 +1,19 @@
+<div class="track-list">
+  <h1 class="track-list__title">{{ title }}</h1>
+  <div class="track-list__container">
+    <div class="track" *ngFor="let track of tracks">
+      <img class="track__image" [src]="track.image">
+      <div class="track__info">
+        <div class="track__description">
+          <h4 class="track__title">{{ track.name }}</h4>
+          <p class="track__subtitle">
+            {{ track.artists | artistsTrackNames }} · {{ track.albumName }}
+          </p>
+        </div>
+        <span class="track__duration">
+          {{ track.durationMs | durationTime }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

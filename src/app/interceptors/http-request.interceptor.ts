@@ -9,8 +9,6 @@ import { Router } from "@angular/router";
 @Injectable()
 export class HttpRequestInterceptor implements HttpInterceptor {
 
-  // TODO: Debuggar interceptor para quando houver erro de autenticação (token expirado)
-
   constructor(
     private inject: Injector,
     private router: Router

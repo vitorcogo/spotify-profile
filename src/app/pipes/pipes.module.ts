@@ -1,12 +1,15 @@
 import { NgModule } from "@angular/core";
 import { ArtistsTrackNamesPipe } from "./artists-track-names.pipe";
+import { DurationTimePipe } from "./duration-time.pipe";
 
 @NgModule({
   declarations: [
-    ArtistsTrackNamesPipe
+    ArtistsTrackNamesPipe,
+    DurationTimePipe
   ],
    exports: [
-    ArtistsTrackNamesPipe
+    ArtistsTrackNamesPipe,
+    DurationTimePipe
    ]
 })
 export class PipesModule { }

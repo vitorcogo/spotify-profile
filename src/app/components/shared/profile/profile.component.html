@@ -1,90 +1,94 @@
-<section class="content" *ngIf="user && topArtists">
+<section class="content">
 
-  <div class="profile">
-    <div class="profile__image-container">
-      <img *ngIf="userImageUrl" [src]="userImageUrl">
-      <span *ngIf="!userImageUrl" class="profile__image-container__default-image"></span>
-    </div>
-    <a class="profile__name" [href]="user.profileLink" target="_blank"> 
-      {{ user.name }} 
-    </a>
-    <div class="profile__counters">
-      <div class="profile__counters--item">
-        <span class="profile__counters--item__quantity">
-          {{ user.followers }}
-        </span>
-        <span class="profile__counters--item__description">
-          Seguidores
-        </span>
+  <ng-container *ngIf="user && topArtists">
+    <div class="profile">
+      <div class="profile__image-container">
+        <img *ngIf="userImageUrl" [src]="userImageUrl">
+        <span *ngIf="!userImageUrl" class="profile__image-container__default-image"></span>
       </div>
-      <div class="profile__counters--item">
-        <span class="profile__counters--item__quantity">
-          {{ user.following }}
-        </span>
-        <span class="profile__counters--item__description">
-          Seguindo
-        </span>
-      </div>
-      <div class="profile__counters--item">
-        <span class="profile__counters--item__quantity">
-          {{ user.playlists }}
-        </span>
-        <span class="profile__counters--item__description">
-          Playlists
-        </span>
-      </div>
-    </div>
-    <div class="profile__logout-action" (click)="logout()">
-      Sair
-      <span class="profile__logout-action__icon"></span>
-    </div>
-  </div>
-
-  <div class="card-list">
-    <div class="card-list__header">
-      <h4 class="card-list__header__title">Artistas mais ouvidos</h4>
-      <a class="card-list__header__show-all" [routerLink]="pagesEnum.ARTISTS">
-        Mostar Tudo >
+      <a class="profile__name" [href]="user.profileLink" target="_blank"> 
+        {{ user.name }} 
       </a>
-    </div>
-    <div class="card-list__container">
-      <div class="card-list__item" *ngFor="let artist of topArtists">
-        <div class="card-list__item__image-container artist">
-          <img *ngIf="artist.image" [src]="artist.image">
-          <span *ngIf="!artist.image" class="card-list__item__image-container__default-image"></span>
+      <div class="profile__counters">
+        <div class="profile__counters--item">
+          <span class="profile__counters--item__quantity">
+            {{ user.followers }}
+          </span>
+          <span class="profile__counters--item__description">
+            Seguidores
+          </span>
         </div>
-        <div class="card-list__item__info">
-          <div class="card-list__item__info__title">
-            {{ artist.name }}
+        <div class="profile__counters--item">
+          <span class="profile__counters--item__quantity">
+            {{ user.following }}
+          </span>
+          <span class="profile__counters--item__description">
+            Seguindo
+          </span>
+        </div>
+        <div class="profile__counters--item">
+          <span class="profile__counters--item__quantity">
+            {{ user.playlists }}
+          </span>
+          <span class="profile__counters--item__description">
+            Playlists
+          </span>
+        </div>
+      </div>
+      <div class="profile__logout-action" (click)="logout()">
+        Sair
+        <span class="profile__logout-action__icon"></span>
+      </div>
+    </div>
+  
+    <div class="card-list">
+      <div class="card-list__header">
+        <h4 class="card-list__header__title">Artistas mais ouvidos</h4>
+        <a class="card-list__header__show-all" [routerLink]="pagesEnum.ARTISTS">
+          Mostar Tudo >
+        </a>
+      </div>
+      <div class="card-list__itens-container">
+        <div class="card-list__item" *ngFor="let artist of topArtists">
+          <div class="card-list__item__image-container artist">
+            <img *ngIf="artist.image" [src]="artist.image">
+            <span *ngIf="!artist.image" class="card-list__item__image-container__default-image"></span>
+          </div>
+          <div class="card-list__item__info">
+            <div class="card-list__item__info__title">
+              {{ artist.name }}
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  
+    <div class="card-list">
+      <div class="card-list__header">
+        <h4 class="card-list__header__title">Músicas mais ouvidas</h4>
+        <a class="card-list__header__show-all" [routerLink]="pagesEnum.TRACKS">
+          Mostar Tudo >
+        </a>
+      </div>
+      <div class="card-list__itens-container">
+        <div class="card-list__item" *ngFor="let track of topTracks">
+          <div class="card-list__item__image-container track">
+            <img *ngIf="track.image" [src]="track.image">
+            <span class="card-list__item__image-container__default-image"></span>
+          </div>
+          <div class="card-list__item__info">
+            <div class="card-list__item__info__title">
+              {{ track.name }}
+            </div>
+            <div class="card-list__item__info__description">
+              {{ track.artists | artistsTrackNames }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
 
-  <div class="card-list">
-    <div class="card-list__header">
-      <h4 class="card-list__header__title">Músicas mais ouvidas</h4>
-      <a class="card-list__header__show-all" [routerLink]="pagesEnum.TRACKS">
-        Mostar Tudo >
-      </a>
-    </div>
-    <div class="card-list__container">
-      <div class="card-list__item" *ngFor="let track of topTracks">
-        <div class="card-list__item__image-container track">
-          <img *ngIf="track.image" [src]="track.image">
-          <span class="card-list__item__image-container__default-image"></span>
-        </div>
-        <div class="card-list__item__info">
-          <div class="card-list__item__info__title">
-            {{ track.name }}
-          </div>
-          <div class="card-list__item__info__description">
-            {{ track.artists | artistsTrackNames }}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <ngx-loading [show]="isLoading"></ngx-loading>
 
 </section>

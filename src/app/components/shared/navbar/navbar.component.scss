@@ -124,3 +124,40 @@ nav {
     }
   }
 }
+
+@media screen and (max-width: 1120px) {
+  :host {
+    height: 10px;
+    width: 100vw;
+  }
+
+  header {
+    flex-direction: row;
+    width: 100%;
+    padding: 0;
+  }
+
+  nav {
+    .pages {
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+
+      &__item {
+        width: 100%;
+      }
+
+      &__link--active {
+        border-left: 0;
+        border-right: 0;
+        border-bottom: 3px solid transparent;
+        border-top: 3px solid var(--green);
+      }
+    }
+  }
+
+  .spotify-logo,
+  .extra-links {
+    display: none;
+  }
+}
