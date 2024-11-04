@@ -20,7 +20,7 @@ export const Pages: Page[] = [
   {
     title: 'Músicas',
     id: PagesEnum.TRACKS,
-    isVisible: false
+    isVisible: true
   },
   {
     title: 'Artistas',

@@ -1,1 +1,6 @@
-<app-track-list></app-track-list>
+<app-track-list
+  [title]="trackListTitle"
+  [tracks]="tracks">
+</app-track-list>
+
+<ngx-loading [show]="isLoading"></ngx-loading>
