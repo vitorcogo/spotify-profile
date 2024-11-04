@@ -238,3 +238,13 @@ section.content {
     }
   }
 }
+
+@media screen and (max-width: 1560px) {
+  .card-list {
+    align-items: center;
+
+    &__itens-container {
+      justify-content: center;
+    }
+  }
+}
