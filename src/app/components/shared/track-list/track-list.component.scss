@@ -52,6 +52,7 @@
   &__title {
     @include text-elipsis;
 
+    max-width: 50vw;
     color: var(--text-main);
     font-size: 1.6rem;
     font-weight: 500;
@@ -70,5 +71,14 @@
     color: var(--text-secondary);
     font-size: 1.3rem;
     font-weight: 500;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .track {
+    &__subtitle,
+    &__title {
+      max-width: 30vw;
+    }
   }
 }
