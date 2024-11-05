@@ -25,6 +25,6 @@ export const Pages: Page[] = [
   {
     title: 'Artistas',
     id: PagesEnum.ARTISTS,
-    isVisible: false
+    isVisible: true
   }
 ]

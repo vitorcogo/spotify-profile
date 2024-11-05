@@ -1,1 +1,16 @@
-<p>artists works!</p>
+<div class="artist-list">
+  <h1 class="artist-list__title">{{ title }}</h1>
+  <div class="artist-list__container">
+    <div class="artist" *ngFor="let artist of artists">
+      <div class="artist__image">
+        <img *ngIf="artist.image" [src]="artist.image">
+        <span *ngIf="!artist.image" class="artist__image__default-image"></span>
+      </div>
+      <div class="artist__info">
+        <h4 class="artist__title">{{ artist.name }}</h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ngx-loading [show]="isLoading"></ngx-loading>

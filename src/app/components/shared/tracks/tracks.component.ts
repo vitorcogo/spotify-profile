@@ -11,19 +11,20 @@ import { SpotifyApiService } from 'src/app/services/spotify.service';
 export class TracksComponent {
 
   tracks: Track[] = [];
-  trackListTitle: string = 'Mais ouvidas';
+  trackListTitle: string = 'Músicas mais ouvidas';
 
   isLoading: boolean = false;
 
   constructor(private spotifyApi: SpotifyApiService) { }
 
   ngOnInit(): void {
-    this.getRecentTracks();
+    this.getTopTracks();
   }
 
-  private getRecentTracks(): void {
+  private getTopTracks(): void {
     this.isLoading = true;
-    this.spotifyApi.getTopTracks(50)
+    const limit = 50;
+    this.spotifyApi.getTopTracks(limit)
       .pipe(
         finalize(() => {
           this.isLoading = false;
